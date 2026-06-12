@@ -1,0 +1,43 @@
+# Raw or derived flight data: never commit.
+*.csv
+*.xlsx
+*.xls
+*.xlsm
+*.xlsb
+*.parquet
+*.feather
+*.jsonl
+
+# Generated reports, model artifacts, and run outputs.
+outputs/
+source_outputs/
+reproduced_outputs/
+calculation_details/
+web_app/outputs/
+model_files/
+*.cbm
+*.pkl
+*.pickle
+*.joblib
+
+# Local training/test data folders. README files are kept.
+data/training/*
+data/test/*
+!data/training/README.md
+!data/test/README.md
+
+# Local environments and caches.
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+
+# Local IDE / OS files.
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+

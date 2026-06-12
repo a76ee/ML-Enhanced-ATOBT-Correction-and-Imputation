@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ATOBT 修正与实际移交对比</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <h1>ATOBT 修正与实际移交对比</h1>
+        <p id="modelStatus">模型状态读取中...</p>
+      </div>
+      <div class="status-pill" id="readyPill">启动中</div>
+    </header>
+
+    <main class="workspace">
+      <section class="panel upload-panel">
+        <form id="uploadForm">
+          <label class="file-zone" for="fileInput">
+            <span class="file-icon">XLSX</span>
+            <span id="fileName">选择 Excel 或 CSV 文件</span>
+            <input id="fileInput" name="file" type="file" accept=".xlsx,.xlsm,.csv" required />
+          </label>
+
+          <div class="field">
+            <label for="scopeSelect">算法口径</label>
+            <select id="scopeSelect" name="scope">
+              <option value="ml" selected>实际移交机坪为真值</option>
+            </select>
+          </div>
+
+          <button class="primary" id="submitButton" type="submit">开始计算</button>
+        </form>
+
+        <div class="downloads" id="downloads" hidden>
+          <a id="downloadXlsx" href="#">下载 Excel 结果</a>
+          <a id="downloadCsv" href="#">下载 CSV 明细</a>
+        </div>
+      </section>
+
+      <section class="metrics-grid">
+        <div class="metric">
+          <span>预测行数</span>
+          <strong id="mRows">-</strong>
+        </div>
+        <div class="metric">
+          <span>实际移交对比行数</span>
+          <strong id="mHistory">-</strong>
+        </div>
+        <div class="metric">
+          <span>修正后 MAE</span>
+          <strong id="mMae">-</strong>
+        </div>
+        <div class="metric">
+          <span>&lt;=3 分钟</span>
+          <strong id="m3">-</strong>
+        </div>
+        <div class="metric">
+          <span>&lt;=5 分钟</span>
+          <strong id="m5">-</strong>
+        </div>
+        <div class="metric">
+          <span>原始 A-TOBT MAE</span>
+          <strong id="mBaseline">-</strong>
+        </div>
+      </section>
+
+      <section class="panel chart-panel">
+        <div class="section-head">
+          <h2>航司实际移交误差对比</h2>
+          <span id="chartNote">等待上传</span>
+        </div>
+        <canvas id="airlineChart" width="980" height="320"></canvas>
+      </section>
+
+      <section class="panel">
+        <div class="section-head">
+          <h2>航司指标</h2>
+          <span>按 MAE 从小到大</span>
+        </div>
+        <div class="table-wrap">
+          <table id="airlineTable"></table>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="section-head">
+          <h2>预测明细预览</h2>
+          <span>前 200 行</span>
+        </div>
+        <div class="table-wrap">
+          <table id="previewTable"></table>
+        </div>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" hidden></div>
+    <script src="/static/app.js"></script>
+  </body>
+</html>
