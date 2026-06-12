@@ -1,4 +1,4 @@
-# ATOBT Handover Correction App
+# ML-Enhanced ATOBT Correction and Imputation
 
 This repository contains the algorithm code and local web app for the thesis project:
 
@@ -87,4 +87,3 @@ To export per-airline calculation processes, parameters, SHAP contributions, sur
 ```
 
 Those exports are generated locally and ignored by Git.
-
